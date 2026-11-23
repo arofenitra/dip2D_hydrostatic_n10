@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  14
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+defaultValues
+{
+    alpha.oil     0;
+    p_rgh       100000;
+}
+
+zones
+{
+    // horizontal free surface at y = 0.15 m: liquid below, gas above
+    pool
+    {
+        type        box;
+        box         (-1e300 -1e300 -1e300) (1e300 0.15 1e300);
+        values
+        {
+            alpha.oil     1;
+            p_rgh       101322.5842;
+        }
+    }
+}
+
+// ************************************************************************* //

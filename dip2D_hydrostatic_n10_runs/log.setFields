@@ -1,0 +1,38 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  14
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 14-a4867fc914c1
+Exec   : setFields
+Date   : Nov 19 2026
+Time   : 23:21:49
+Host   : "aro"
+PID    : 91204
+I/O    : uncollated
+Case   : /home/aro/Downloads/OpenFOAM_resources/project/runs/s2_hydrostatic_n10
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading "setFieldsDict"
+
+Setting field default values
+    Setting volScalarField::Internal alpha.oil
+    Setting volScalarField::Internal p_rgh
+
+Setting field zone values
+Zone: pool
+    Setting volScalarField::Internal alpha.oil
+    Setting volScalarField::Internal p_rgh
+
+End
+

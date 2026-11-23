@@ -1,0 +1,1749 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[11pt,english]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usepackage{tabularx}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}%
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}%
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}%
+  }%
+}{%
+  \KOMAoptions{parskip=half}%
+}
+\makeatother
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{%
+  \usepackage{footnotehyper}%
+}{%
+  \usepackage{footnote}%
+}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\def\maxheight{%
+  \ifdim\Gin@nat@height>\textheight
+    \textheight
+  \else
+    \Gin@nat@height
+  \fi
+}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen}
+\ifLuaTeX
+  \usepackage{selnolig}
+\fi
+\IfFileExists{bookmark.sty}{%
+  \usepackage{bookmark}%
+}{%
+  \usepackage{hyperref}%
+}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Case dip2D\_hydrostatic\_n10 - static verification: hydrostatics and spurious currents},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Case \texttt{dip2D\_hydrostatic\_n10} - static verification: hydrostatics and spurious currents}
+
+\usepackage{fancyhdr}
+\makeatletter
+\providecommand{\subtitle}[1]{%
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}%
+}
+\makeatother
+
+\pagestyle{fancy}
+\lhead{Skoltech. F2026. Modeling with Open Source Software. Project report.}
+\rhead{By Arofenitra Rarivonjy}
+\setlength{\headrulewidth}{1pt}
+
+\makeatletter
+\date{}
+\AtBeginDocument{%
+  \def\labelitemi{\(\diamond\)}%
+}
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+
+\title{Terrain-Induced Slugging in OpenFOAM\\
+{\large{}A term project in the course: Modeling with Open Source Software}}
+\author{by Arofenitra Rarivonjy, Skoltech, Fall 2026}
+\maketitle
+
+\begin{abstract}
+The case presented in this project progress report is about \textbf{static verification} of a two-phase solver on a V-shaped geometry pipe, where the liquid pool is initialised in exact hydrostatic equilibrium with closed inlets so that any residual motion is a numerical artefact. The hydrostatic pressure is reproduced to 0.01\,\%. The composite source $S_\alpha$ has a zero explicit mass-transfer part, while cycle-resolved grid and time-step convergence remain to be demonstrated.
+\end{abstract}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+
+
+\hypertarget{scoring-map-15-point-assessment}{%
+\section{Scoring map (15-point
+assessment)}\label{scoring-map-15-point-assessment}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+criterion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+points
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+where in this document
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Problem description and mathematical formulation & 3 & sections 1 and
+2 \\
+Dimensional analysis & 2 & section 3 \\
+Numerical methodology and expected accuracy & 4 & section 4 \\
+Computational setup & 2 & section 5 \\
+Preliminary results, verification, critical analysis & 4 & section 6 \\
+\end{longtable}
+
+\hypertarget{problem-description-and-motivation}{%
+\section{1. Problem description and
+motivation}\label{problem-description-and-motivation}}
+
+This case is a \textbf{static verification} of the two-phase solver on
+the dip geometry. The liquid pool is initialised in exact hydrostatic
+equilibrium and both inlets are closed (zero prescribed velocity), so
+the exact solution is: velocity identically zero, pressure hydrostatic
+in each phase, and a flat liquid/gas interface. Any non-zero velocity or
+pressure drift is a numerical artefact and is measured here.
+
+Motivation: before trusting a dynamic slugging simulation, the same mesh
+and scheme must reproduce a state that should not move. This separates
+discretisation errors (spurious currents at the density jump,
+pressure-velocity decoupling) from physical dynamics.
+
+Role in the project: V4 (hydrostatic pressure) and V5 (spurious
+currents).
+
+
+\hypertarget{mathematical-formulation}{%
+\section{2. Mathematical formulation}\label{mathematical-formulation}}
+
+\hypertarget{governing-equations}{%
+\subsection{2.1 Governing equations}\label{governing-equations}}
+
+The solver is OpenFOAM-14 \texttt{compressibleVoF}, run by
+\texttt{foamRun}. Unknowns are one velocity \(\mathbf U\), pressure
+\(p\), temperature \(T\) and the liquid fraction \(\alpha_l\)
+(\texttt{0/alpha.oil}, \(\alpha_g=1-\alpha_l\)), with
+\(\rho=\alpha_l\rho_l+\alpha_g\rho_g\),
+\(\mu=\alpha_l\mu_l+\alpha_g\mu_g\), \(\rho_g=p/(R_gT)\) (perfect gas)
+and \(\rho_l\) constant (\texttt{rhoConst}). The governing equations is stemed from Mass/Volume Balance (the two-phase mixture), Liquid-phase transport, Momentum (local mixture density, pressure, gravity, viscous stress, surface tension), Energy (storage + advection of energy, kinetik energy, diffusion)
+
+\[
+\begin{aligned}
+\partial_t \rho + \nabla\cdot(\rho\mathbf U) &= 0,\\
+\partial_t(\alpha_l\rho_l)+\nabla\cdot(\alpha_l\rho_l\mathbf U)
++\nabla\cdot(\alpha_l\alpha_g\rho_l\mathbf U_r) &= S_\alpha,\\
+\partial_t(\rho\mathbf U)+\nabla\cdot(\rho\mathbf U\mathbf U)
+&= -\nabla p+\rho\mathbf g+\nabla\cdot\boldsymbol\tau+\sigma\kappa\nabla\alpha_l,\\
+\partial_t(\rho e)+\nabla\cdot(\rho\mathbf U e)+\partial_t(\rho K)+\nabla\cdot(\rho\mathbf U K)
+&= \nabla\cdot(\alpha_{eff}\nabla T),
+\end{aligned}
+\]
+
+with the interface-compression velocity
+\(\mathbf U_r=c_\alpha|\mathbf U|\hat{\mathbf n}\), \(c_\alpha=1\),
+\(\hat{\mathbf n}=\nabla\alpha_l/|\nabla\alpha_l|\), the curvature
+\(\kappa=-\nabla\cdot\hat{\mathbf n}\) of the CSF model and the
+compressibility source \(S_\alpha\). The energy equation is what makes
+the gas response close to adiabatic.
+
+\hypertarget{modelling-assumptions}{%
+\subsection{2.2 Modelling assumptions}\label{modelling-assumptions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Inlets closed (velocity fixed to zero), outlet pressure fixed: no
+  forced throughflow.
+\item
+  Initial pressure is hydrostatic in the liquid:
+  \texttt{p\_rgh\ =\ p0\ +\ (rho\_l\ -\ rho\_g)\ g\ y\_s}; a uniform
+  p\_rgh would introduce a spurious 1.3 kPa step at the interface.
+\item
+  Surface tension is active in the baseline; the sigma = 0 twin
+  (separate case) isolates the capillary contribution to the parasitic
+  current.
+\item
+  Laminar; no turbulence model. Density ratio 750:1 and viscosity ratio
+  1.1e4:1 as in production.
+\end{itemize}
+
+\hypertarget{initial-and-boundary-conditions}{%
+\subsection{2.3 Initial and boundary
+conditions}\label{initial-and-boundary-conditions}}
+
+Boundary-condition \textbf{types}, can be verified at \texttt{0/}
+dictionaries:
+
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{}l *{4}{>{\centering\arraybackslash}X} c@{}}
+\toprule
+patch & U & p\_rgh & alpha.oil & T & p \\
+\midrule
+inletLiquid  & fixedValue & fixedFluxPressure & fixedValue & fixedValue & calculated \\
+inletGas     & fixedValue & fixedFluxPressure & fixedValue & fixedValue & calculated \\
+outlet       & pressureInlet & fixedValue & inletOutlet & inletOutlet & calculated \\
+&OutletVelocity&&&&
+\\
+walls        & noSlip & fixedFluxPressure & zeroGradient & zeroGradient & calculated \\
+frontAndBack & empty  & empty & empty & empty & empty \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{fixedValue} & impose the value (velocity, phase fraction,
+temperature, or the pressure level at the outlet) \\
+\texttt{fixedFluxPressure} & adjust the pressure so the mass flux
+matches the velocity BC (walls and velocity inlets) \\
+\texttt{pressureInletOutletVelocity} & zero velocity unless the flow
+wants to enter, then it follows the pressure \\
+\texttt{inletOutlet} & zero gradient for outflow, fixed inlet value for
+backflow \\
+\texttt{calculated} & recomputed from other fields (p = p\_rgh +
+rho*gh) \\
+\texttt{zeroGradient} & no normal gradient (adiabatic wall for T) \\
+\texttt{noSlip} & zero velocity at the wall \\
+\texttt{empty} & 2D constraint: the solution does not vary through this
+direction \\
+\end{longtable}
+
+Initial condition (\texttt{system/setFieldsDict}):
+
+\begin{verbatim}
+defaultValues
+{
+    alpha.oil     0;
+    p_rgh       100000;
+}
+
+zones
+{
+    // horizontal free surface at y = 0.15 m: liquid below, gas above
+    pool
+    {
+        type        box;
+        box         (-1e300 -1e300 -1e300) (1e300 0.15 1e300);
+        values
+        {
+            alpha.oil     1;
+            p_rgh       101322.5842;
+        }
+    }
+}
+\end{verbatim}
+
+The liquid is initialised with the exact hydrostatic \texttt{p\_rgh}
+(\texttt{p\_rgh\ =\ p0\ +\ (rho\_l\ -\ rho\_g)\ g\ y\_s}) instead of a
+uniform value, which makes the initial state static to round-off in the
+liquid.
+
+\hypertarget{dimensional-analysis}{%
+\section{3. Dimensional analysis}\label{dimensional-analysis}}
+
+\hypertarget{length-and-grid-scales}{%
+\subsection{3.1 Length and grid scales}\label{length-and-grid-scales}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+scale
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+definition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+significance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+diameter / gap D & given & 0.05 m & pipe diameter, also the grid
+scale \\
+vertical height H & D/cos(theta) & 0.05019 m & 2D planar channel
+height \\
+total length L & 2 x 3 m & 6 m & L/D = 120 \\
+dip depth dz & L\_leg sin(theta) & 0.2615 m & sets the hydrostatic head
+rho\_l g dz = 2.308 kPa \\
+grid spacing & D/n & 5.000 mm & D/dx = 10 \\
+vertical spacing & H/n & 5.019 mm & 10 cells across H \\
+capillary length & sqrt(sigma/(Delta rho g)) & 1.84 mm & below grid
+scale: capillarity under-resolved \\
+\end{longtable}
+
+\hypertarget{time-scales}{%
+\subsection{3.2 Time scales}\label{time-scales}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+scale
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+definition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+significance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+advective & D/(J\_L+J\_G) & 0.07143 s & cell-crossing time \\
+system transit & L/(J\_L+J\_G) & 8.571 s & through-flow time \\
+leg transit & L\_leg/J\_G & 6 s & gas displacement time \\
+acoustic transit & L/c & 0.01749 s & pressure equilibration (c = 343.1
+m/s) \\
+gas compression & L\_leg/J\_G & 6 s & time to compress the trapped
+gas \\
+viscous diffusion (oil) & D\^{}2/nu\_l & 11.25 s & momentum diffusion
+across the channel \\
+viscous film & h\^{}2/nu\_l & 1.012 s & h = 0.3 D inlet layer \\
+tilted U-tube & 2 pi sqrt(L/(2 g sin theta)) & 11.77 s & gravity-wave
+scale of the liquid column \\
+simulated time & endTime & 5 s & see results for how many cycles \\
+\end{longtable}
+
+\hypertarget{dimensionless-groups}{%
+\subsection{3.3 Dimensionless groups}\label{dimensionless-groups}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+group
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+definition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+physical significance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Re\_sl & rho\_l J\_L D/mu\_l & 45.0 & liquid superficial Reynolds:
+laminar \\
+Re\_sg & rho\_g J\_G D/mu\_g & 1666.7 & gas superficial Reynolds: at the
+laminar/transitional edge \\
+Re\_g,local & rho\_g U\_g D/mu\_g & 2381 & in-situ gas Reynolds just
+above 2300 (assumption: laminar) \\
+Fr\_m & (J\_L+J\_G)/sqrt(gD) & 0.9995 & inertia vs gravity; Fr
+\textasciitilde{} 1 \\
+Eo & Delta rho g D\^{}2/sigma & 734.8 & gravity dominates capillarity by
+\textasciitilde700 \\
+We\_g & rho\_g J\_G\^{}2 D/sigma & 0.5 & gas inertia vs capillarity
+(weak) \\
+rho\_l/rho\_g & - & 750 & density ratio: the hard VOF number \\
+mu\_l/mu\_g & - & 11111 & viscosity ratio \\
+rho\_l g dz/p0 & - & 0.02308 & compression parameter: 2.3 \%
+(compressibility matters) \\
+L/D & - & 120 & slug length 12-30 D fits 4-10 times \\
+l\_c/D & - & 0.03689 & capillary length / gap \\
+\end{longtable}
+
+\hypertarget{interpretation}{%
+\subsection{3.4 Interpretation}\label{interpretation}}
+
+The liquid is laminar (\texttt{Re\_sl\ =\ 45}); the gas sits at the
+laminar/transitional edge
+(\texttt{Re\_g,local\ \textasciitilde{}\ 2.4e3}), which is an
+assumption. \texttt{Eo\ \textasciitilde{}\ 735} means gravity dominates
+surface tension by nearly three orders of magnitude, so the interface
+shape is gravity-controlled.
+%  and the \textasciitilde10 \% Laplace bias is a weak error. 
+\texttt{Fr\_m\ \textasciitilde{}\ 1} means inertia and
+gravity are comparable, so neither can be neglected. The
+\textbf{compression parameter \texttt{rho\_l\ g\ dz/p0\ =\ 2.3\ \%}} is
+the key number for this problem: it is small enough that the flow looks
+almost incompressible, but large enough that the dip stores a measurable
+gas pressure - which is exactly why the compressible-VOF model is
+needed. The density ratio 750 is what makes the VOF interface and the
+pressure-gradient balance numerically hard .
+% (hence V5).
+
+\hypertarget{numerical-methodology-and-expected-accuracy}{%
+\section{4. Numerical methodology and expected
+accuracy}\label{numerical-methodology-and-expected-accuracy}}
+
+\hypertarget{discretisation}{%
+\subsection{4.1 Discretisation}\label{discretisation}}
+
+The solver is OpenFOAM-14 \texttt{compressibleVoF}, run by
+\texttt{foamRun}. It uses the \textbf{finite-volume method} on a
+structured hexahedral mesh. For a conserved quantity \(\phi\) in control
+volume \(V_P\) with faces \(f\),
+
+\[
+\int_{V_P}\partial_t\phi\,dV + \oint_{\partial V_P}\mathbf F\cdot d\mathbf A
+= \int_{V_P}S\,dV
+\quad\Longrightarrow\quad
+\partial_t(\phi_P V_P) + \sum_f F_f A_f = S_P V_P ,
+\]
+
+with the face flux \(F_f = \mathbf U_f\cdot\mathbf n_f\) evaluated by
+linear (central) interpolation and the face value \(\phi_f\) by the
+selected convection scheme:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{first-order upwind} (used for \(\mathbf U\) and \(T\)):
+  \(\phi_f = \phi_{UP}\) - stable but numerically diffusive
+  (\(\mathcal O(h)\) on smooth fields);
+\item
+  \textbf{linear/central} for gradients and the pressure term - second
+  order on smooth fields;
+\item
+  \textbf{interface compression} for the phase fraction: a flux
+  \(\alpha_l\alpha_g\mathbf U_r\) with
+  \(\mathbf U_r = c_\alpha|\mathbf U|\hat{\mathbf n}\), \(c_\alpha=1\),
+  \(\hat{\mathbf n}=\nabla\alpha_l/|\nabla\alpha_l|\), which sharpens
+  the interface while preserving boundedness.
+\end{itemize}
+
+\emph{Time}: first-order implicit Euler,
+\(\phi^{n+1}=\phi^n+\Delta t\,f(\phi^{n+1})\), with the time step
+controlled by \texttt{adjustTimeStep} and the Courant number
+
+\[
+\mathrm{Co} = \max_f \frac{|\phi_f|\Delta t}{V_P} \le 0.5,\qquad
+\mathrm{Co}_\alpha = \max_f \frac{|\phi_{\alpha,f}|\Delta t}{V_P} \le 0.5 .
+\]
+
+The phase fraction is advanced with \textbf{MULES}: an explicit
+flux-limited update
+
+\[
+\alpha_P^{n+1} = \alpha_P^{n} - \frac{\Delta t}{V_P}\sum_f \lambda_f F_{\alpha,f},
+\qquad \lambda_f \in [0,1],
+\]
+
+where the limiter \(\lambda_f\) is chosen so that \(0\le\alpha\le1\);
+\texttt{nSubCycles} sub-cycles keep \(\mathrm{Co}_\alpha\le 0.5\). The
+pressure-velocity coupling is \textbf{PIMPLE} (a merged PISO/SIMPLE):
+after the momentum equation the pressure correction \(p'\) solves
+\(\nabla\cdot\left(A_p^{-1}\nabla p'\right) = \nabla\cdot\mathbf U^* + \text{compressibility source}\),
+the velocity is corrected as
+\(\mathbf U=\mathbf U^* - A_p^{-1}\nabla p'\), and the loop is repeated
+\texttt{nOuterCorrectors} times. For compressible flow the continuity
+equation carries the density compressibility
+\(\psi=\partial\rho/\partial p = 1/(R_gT)\), which is how the dip stores
+gas pressure.
+
+\emph{Expected accuracy}: second order in space for smooth fields
+(central terms), first order in time (Euler), and \textbf{first order
+for the interface position} because the VOF interface is 1-2 cells
+thick; the effective order of the global pressure history is therefore
+\(\approx 1\)--\(2\).
+%  and is quantified by the GCI where a repeatable
+% signal exists.
+
+\hypertarget{solver-controls}{%
+\subsection{4.2 Solver controls}\label{solver-controls}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+setting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+solver & compressibleVoF \\
+time scheme & Euler \\
+% alpha convection & Gauss interfaceCompression vanLeer 1 \\
+U convection & Gauss upwind \\
+nOuterCorrectors / nCorrectors & 2 / 1 \\
+MULES nSubCycles / nIter & 2 / 5 \\
+maxCo / maxAlphaCo & 0.5 / 0.5 \\
+maxDeltaT   
+{[}s{]} & 0.01 \\
+endTime   
+{[}s{]} / writeInterval   
+{[}s{]} & 5 / 0.25 \\
+function objects & probes, interfaceHeight1, totalMass, maxU, massIn,
+massOut, pOutlet \\
+\end{longtable}
+
+\hypertarget{expected-accuracy-and-error-sources}{%
+\subsection{4.3 Expected accuracy and error
+sources}\label{expected-accuracy-and-error-sources}}
+
+\begin{itemize}
+\tightlist
+\item
+  Spatial: formally second order for the central terms, \textbf{first
+  order for U and T} (upwind), and first order for the interface
+  position because the VOF interface is 1-2 cells thick.
+\item
+  Temporal: first-order Euler; the time step is capped by
+  \texttt{Co\ \textless{}=\ 0.5} and
+  \texttt{Co\_alpha\ \textless{}=\ 0.5}, so the temporal error is
+  expected to be small.
+  %  but is \textbf{not yet quantified} for cycle
+  % quantities (V11 pending).
+\item
+  Linear-solver error: pressure tolerance 1e-8 (relative),
+  velocity/alpha tight tolerances; the solver converges every time step
+  (\texttt{nOuterCorrectors} PIMPLE loops).
+\item
+  Modelling errors dominate the numerical ones: laminar assumption for a
+  transitional gas, CSF curvature bias (\textasciitilde10 \% on the
+  Laplace jump), and the 2D planar/duct idealisation.
+\end{itemize}
+
+\hypertarget{computational-setup}{%
+\section{5. Computational setup}\label{computational-setup}}
+
+\hypertarget{geometry-and-mesh}{%
+\subsection{5.1 Geometry and mesh}\label{geometry-and-mesh}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+item & value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+domain & L = 6 m, D = 0.05 m, dip depth 0.2615 m, 5 deg \\
+cells & 12000 \\
+D/dx & 10 \\
+grid spacing & - \\
+2D/3D & 2D planar (empty front/back) \\
+\end{longtable}
+
+Mesh quality (from \texttt{log.checkMesh}, where available):
+\texttt{Mesh\ OK}; the dip mesh has maximum non-orthogonality 4.98 deg
+(the 5 deg leg skew), maximum aspect ratio 1.09-1.14 and minimum cell
+volume 2.51e-7 m\^{}3 for D/dx = 10.
+
+\hypertarget{boundary-conditions}{%
+\subsection{5.2 Boundary conditions}\label{boundary-conditions}}
+
+See section 2.3 for the patch/field matrix and the initial condition;
+% the exact numeric values are in
+% \texttt{cases/dip2D\_hydrostatic\_n10/0/}.
+
+\hypertarget{hardware-and-cost}{%
+\subsection{5.3 Hardware and cost}\label{hardware-and-cost}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+run & time steps & ExecutionTime   
+{[}s{]} & core-h per sim-second \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+% \texttt{s2\_hydro\_60s} & 6045 & 555 & 0.002569 \\
+% \texttt{s2\_hydrostatic\_long} & 2045 & 174 & 0.002422 \\
+\texttt{s2\_hydrostatic\_n10} & 545 & 37 & 0.002035 \\
+% \texttt{s2\_hydrostatic\_n10b} & 545 & 52 & 0.002903 \\
+\end{longtable}
+
+All runs on one core of a 12-core, 22 GB machine (serial is tested and reported metrics here in computational time).
+
+\hypertarget{preliminary-results-verification-and-critical-analysis}{%
+\section{6. Preliminary results, verification and critical
+analysis}\label{preliminary-results-verification-and-critical-analysis}}
+
+\hypertarget{runs-and-quantitative-results}{%
+\subsection{6.1 Runs and quantitative
+results}\label{runs-and-quantitative-results}}
+
+Summary of the runs associated with this case:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+run
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+status
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+t\_last   
+{[}s{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+record   
+{[}s{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+T peaks   
+{[}s{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+T FFT   
+{[}s{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+dp   
+{[}Pa{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+mass cum. err
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{s2\_hydro\_60s} & finished & 60.000 & 60.000 & - & - & - &
+% n/a \\
+% \texttt{s2\_hydrostatic\_long} & finished & 20.000 & 20.000 & - & - & -
+& n/a \\
+\texttt{n10} & finished & 5.000 & 5.000 & - & - & - &
+n/a \\
+% \texttt{s2\_hydrostatic\_n10b} & finished & 5.000 & 5.000 & - & - & - &
+n/a \\
+\end{longtable}
+
+% \hypertarget{run-s2_hydro_60s}{%
+% \subsection{\texorpdfstring{Run
+% \texttt{s2\_hydro\_60s}}{Run s2\_hydro\_60s}}\label{run-s2_hydro_60s}}
+
+% Status: \textbf{finished}; last simulated time 60.000 s.
+
+% \begin{longtable}[]{@{}ll@{}}
+% \toprule\noalign{}
+% metric & value \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% record length   
+% {[}s{]} & 60.000 \\
+% transient end   
+% {[}s{]} & 30.000 \\
+% transient flag & transient\_not\_detected \\
+% period from peaks   
+% {[}s{]} & - \\
+% period from FFT   
+% {[}s{]} & - \\
+% dp amplitude   
+% {[}Pa{]} & - \\
+% dp global range   
+% {[}Pa{]} & 0.0 \\
+% p\_up min / max   
+% {[}Pa{]} & 99996.9 / 99996.9 \\
+% n cycles used & - \\
+% n slugs detected & n/a (static case) \\
+% core-hours & 0.169 \\
+% \end{longtable}
+
+% Mass balance: \textbf{n/a} (no throughflow / hydrostatic case).
+
+% \begin{quote}
+% transient not detected (transient\_not\_detected); period/dp are not yet
+% statistically converged
+% \end{quote}
+
+% \begin{quote}
+% pressure signal: p\_up; 1201 samples from 0.000 to 60.000 s
+% \end{quote}
+
+% \begin{quote}
+% holdup x-t field: 1201 times x 31 stations
+% \end{quote}
+
+% \begin{quote}
+% mass balance: no-flow/hydrostatic case (inlet/outlet mass flows are
+% numerical zero) -- check not applicable
+% \end{quote}
+
+% Numerical details parsed from the solver log:
+
+% \begin{longtable}[]{@{}ll@{}}
+% \toprule\noalign{}
+% quantity & value \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% time steps & 6045 \\
+% dt min / median / max   
+% {[}ms{]} & 1.1962 / 10.0000 / 10.0000 \\
+% max Co / max Co\_alpha & 0.57 / 0.57 \\
+% min / max alpha.oil & -1.3e-15 / 1.000000 \\
+% solver ExecutionTime   
+% {[}s{]} & 555 \\
+% core-hours per simulated second & 0.002569 \\
+% \end{longtable}
+
+% Extracted data (under \texttt{runs/s2\_hydro\_60s/extracted/}):
+
+% \begin{longtable}[]{@{}lll@{}}
+% \toprule\noalign{}
+% file & rows & time span \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% holdup.csv & 37231 & 0.000-\textgreater60.000 s \\
+% holdup\_stations.csv & 31 & \\
+% mass.csv & 1201 & 0.000-\textgreater60.000 s \\
+% massflow.csv & 1201 & 0.000-\textgreater60.000 s \\
+% maxU.csv & 1201 & 0.000-\textgreater60.000 s \\
+% p\_time.csv & 1201 & 0.000-\textgreater60.000 s \\
+% probe\_T.csv & 1201 & 0.000-\textgreater60.000 s \\
+% probe\_U.csv & 1201 & 0.000-\textgreater60.000 s \\
+% probe\_alpha\_oil.csv & 1201 & 0.000-\textgreater60.000 s \\
+% \end{longtable}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydro_60s_pressure.png}
+% \caption{Pressure time series at the upstream, dip and downstream
+% probes. (s2\_hydro\_60s)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydro_60s_holdup_stations.png}
+% \caption{Holdup (alpha\_l) at the measurement stations.
+% (s2\_hydro\_60s)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydro_60s_xt.png}
+% \caption{Space-time diagram of holdup. (s2\_hydro\_60s)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydro_60s_fft.png}
+% \caption{FFT of the upstream pressure. (s2\_hydro\_60s)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydro_60s_slug_hist.png}
+% \caption{Histogram of detected slug lengths. (s2\_hydro\_60s)}
+% \end{figure}
+
+% \hypertarget{run-s2_hydrostatic_long}{%
+% \subsection{\texorpdfstring{Run
+% \texttt{s2\_hydrostatic\_long}}{Run s2\_hydrostatic\_long}}\label{run-s2_hydrostatic_long}}
+
+% Status: \textbf{finished}; last simulated time 20.000 s.
+
+% \begin{longtable}[]{@{}ll@{}}
+% \toprule\noalign{}
+% metric & value \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% record length   
+% {[}s{]} & 20.000 \\
+% transient end   
+% {[}s{]} & 10.000 \\
+% transient flag & transient\_not\_detected \\
+% period from peaks   
+% {[}s{]} & - \\
+% period from FFT   
+% {[}s{]} & - \\
+% dp amplitude   
+% {[}Pa{]} & - \\
+% dp global range   
+% {[}Pa{]} & 0.0 \\
+% p\_up min / max   
+% {[}Pa{]} & 99996.9 / 99996.9 \\
+% n cycles used & - \\
+% n slugs detected & n/a (static case) \\
+% core-hours & 0.049 \\
+% \end{longtable}
+
+% Mass balance: \textbf{n/a} (no throughflow / hydrostatic case).
+
+% \begin{quote}
+% transient not detected (transient\_not\_detected); period/dp are not yet
+% statistically converged
+% \end{quote}
+
+% \begin{quote}
+% pressure signal: p\_up; 401 samples from 0.000 to 20.000 s
+% \end{quote}
+
+% \begin{quote}
+% holdup x-t field: 401 times x 31 stations
+% \end{quote}
+
+% \begin{quote}
+% mass balance: no-flow/hydrostatic case (inlet/outlet mass flows are
+% numerical zero) -- check not applicable
+% \end{quote}
+
+% Numerical details parsed from the solver log:
+
+% \begin{longtable}[]{@{}ll@{}}
+% \toprule\noalign{}
+% quantity & value \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% time steps & 2045 \\
+% dt min / median / max   
+% {[}ms{]} & 1.1962 / 10.0000 / 10.0000 \\
+% max Co / max Co\_alpha & 0.57 / 0.57 \\
+% min / max alpha.oil & -7.5e-21 / 1.000000 \\
+% solver ExecutionTime   
+% {[}s{]} & 174 \\
+% core-hours per simulated second & 0.002422 \\
+% \end{longtable}
+
+% Extracted data (under \texttt{runs/s2\_hydrostatic\_long/extracted/}):
+
+% \begin{longtable}[]{@{}lll@{}}
+% \toprule\noalign{}
+% file & rows & time span \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% holdup.csv & 12431 & 0.000-\textgreater20.000 s \\
+% holdup\_stations.csv & 31 & \\
+% mass.csv & 401 & 0.000-\textgreater20.000 s \\
+% massflow.csv & 401 & 0.000-\textgreater20.000 s \\
+% maxU.csv & 401 & 0.000-\textgreater20.000 s \\
+% p\_time.csv & 401 & 0.000-\textgreater20.000 s \\
+% probe\_T.csv & 401 & 0.000-\textgreater20.000 s \\
+% probe\_U.csv & 401 & 0.000-\textgreater20.000 s \\
+% probe\_alpha\_oil.csv & 401 & 0.000-\textgreater20.000 s \\
+% \end{longtable}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydrostatic_long_pressure.png}
+% \caption{Pressure time series at the upstream, dip and downstream
+% probes. (s2\_hydrostatic\_long)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydrostatic_long_holdup_stations.png}
+% \caption{Holdup (alpha\_l) at the measurement stations.
+% (s2\_hydrostatic\_long)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydrostatic_long_xt.png}
+% \caption{Space-time diagram of holdup. (s2\_hydrostatic\_long)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydrostatic_long_fft.png}
+% \caption{FFT of the upstream pressure. (s2\_hydrostatic\_long)}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics{figures/s2_hydrostatic_long_slug_hist.png}
+% \caption{Histogram of detected slug lengths. (s2\_hydrostatic\_long)}
+% \end{figure}
+
+\hypertarget{run-s2_hydrostatic_n10}{%
+\subsection{\texorpdfstring{Run
+\texttt{s2\_hydrostatic\_n10}}{Run s2\_hydrostatic\_n10}}\label{run-s2_hydrostatic_n10}}
+
+Status: \textbf{finished}; last simulated time 5.000 s.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+metric & value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+record length   
+{[}s{]} & 5.000 \\
+transient end   
+{[}s{]} & 2.500 \\
+transient flag & transient\_not\_detected \\
+period from peaks   
+{[}s{]} & - \\
+period from FFT   
+{[}s{]} & - \\
+dp amplitude   
+{[}Pa{]} & - \\
+dp global range   
+{[}Pa{]} & 0.2 \\
+p\_up min / max   
+{[}Pa{]} & 99996.8 / 99997.0 \\
+n cycles used & - \\
+n slugs detected & n/a (static case) \\
+core-hours & 0.010 \\
+\end{longtable}
+
+Mass balance: \textbf{n/a} (no throughflow / hydrostatic case).
+
+\begin{quote}
+transient not detected (transient\_not\_detected); period/dp are not yet
+statistically converged
+\end{quote}
+
+\begin{quote}
+pressure signal: p\_up; 101 samples from 0.000 to 5.000 s
+\end{quote}
+
+\begin{quote}
+holdup x-t field: 101 times x 31 stations
+\end{quote}
+
+\begin{quote}
+mass balance: no-flow/hydrostatic case (inlet/outlet mass flows are
+numerical zero) -- check not applicable
+\end{quote}
+
+Numerical details parsed from the solver log:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+quantity & value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+time steps & 545 \\
+dt min / median / max   
+{[}ms{]} & 1.1962 / 10.0000 / 10.0000 \\
+max Co / max Co\_alpha & 0.57 / 0.57 \\
+min / max alpha.oil & -2.7e-20 / 1.000000 \\
+solver ExecutionTime   
+{[}s{]} & 37 \\
+core-hours per simulated second & 0.002035 \\
+\end{longtable}
+
+Extracted data (under \texttt{runs/s2\_hydrostatic\_n10/extracted/}):
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+file & rows & time span \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+holdup.csv & 3131 & 0.000-\textgreater5.000 s \\
+holdup\_stations.csv & 31 & \\
+mass.csv & 101 & 0.000-\textgreater5.000 s \\
+massflow.csv & 101 & 0.000-\textgreater5.000 s \\
+p\_time.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_T.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_U.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_alpha\_oil.csv & 101 & 0.000-\textgreater5.000 s \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10_pressure.png}
+\caption{Pressure time series at the upstream, dip and downstream
+probes. (s2\_hydrostatic\_n10)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10_holdup_stations.png}
+\caption{Holdup (alpha\_l) at the measurement stations.
+(s2\_hydrostatic\_n10)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10_xt.png}
+\caption{Space-time diagram of holdup. (s2\_hydrostatic\_n10)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10_fft.png}
+\caption{FFT of the upstream pressure. (s2\_hydrostatic\_n10)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10_slug_hist.png}
+\caption{Histogram of detected slug lengths. (s2\_hydrostatic\_n10)}
+\end{figure}
+
+% \hypertarget{run-s2_hydrostatic_n10b}{%
+% \subsection{\texorpdfstring{Run
+% \texttt{s2\_hydrostatic\_n10b}}{Run s2\_hydrostatic\_n10b}}\label{run-s2_hydrostatic_n10b}}
+
+% Status: \textbf{finished}; last simulated time 5.000 s.
+
+% \begin{longtable}[]{@{}ll@{}}
+% \toprule\noalign{}
+% metric & value \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% record length   
+% {[}s{]} & 5.000 \\
+% transient end   
+% {[}s{]} & 2.500 \\
+% transient flag & transient\_not\_detected \\
+% period from peaks   
+% {[}s{]} & - \\
+% period from FFT   
+% {[}s{]} & - \\
+% dp amplitude   
+% {[}Pa{]} & - \\
+% dp global range   
+% {[}Pa{]} & 0.2 \\
+% p\_up min / max   
+% {[}Pa{]} & 99996.8 / 99997.0 \\
+% n cycles used & - \\
+% n slugs detected & n/a (static case) \\
+% core-hours & 0.014 \\
+% \end{longtable}
+
+% Mass balance: \textbf{n/a} (no throughflow / hydrostatic case).
+
+% \begin{quote}
+% transient not detected (transient\_not\_detected); period/dp are not yet
+% statistically converged
+% \end{quote}
+
+\begin{quote}
+pressure signal: p\_up; 101 samples from 0.000 to 5.000 s
+\end{quote}
+
+\begin{quote}
+holdup x-t field: 101 times x 31 stations
+\end{quote}
+
+\begin{quote}
+mass balance: no-flow/hydrostatic case (inlet/outlet mass flows are
+numerical zero) -- check not applicable
+\end{quote}
+
+Numerical details parsed from the solver log:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+quantity & value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+time steps & 545 \\
+dt min / median / max   
+{[}ms{]} & 1.1962 / 10.0000 / 10.0000 \\
+max Co / max Co\_alpha & 0.57 / 0.57 \\
+min / max alpha.oil & -2.7e-20 / 1.000000 \\
+solver ExecutionTime   
+{[}s{]} & 52 \\
+core-hours per simulated second & 0.002903 \\
+\end{longtable}
+
+% Extracted data (under \texttt{runs/s2\_hydrostatic\_n10b/extracted/}):
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+file & rows & time span \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+holdup.csv & 3131 & 0.000-\textgreater5.000 s \\
+holdup\_stations.csv & 31 & \\
+mass.csv & 101 & 0.000-\textgreater5.000 s \\
+massflow.csv & 101 & 0.000-\textgreater5.000 s \\
+maxU.csv & 101 & 0.000-\textgreater5.000 s \\
+p\_time.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_T.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_U.csv & 101 & 0.000-\textgreater5.000 s \\
+probe\_alpha\_oil.csv & 101 & 0.000-\textgreater5.000 s \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10b_pressure.png}
+\caption{Pressure time series at the upstream, dip and downstream
+probes. (s2\_hydrostatic\_n10b)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10b_holdup_stations.png}
+\caption{Holdup (alpha\_l) at the measurement stations.
+(s2\_hydrostatic\_n10b)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10b_xt.png}
+\caption{Space-time diagram of holdup. (s2\_hydrostatic\_n10b)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10b_fft.png}
+\caption{FFT of the upstream pressure. (s2\_hydrostatic\_n10b)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/s2_hydrostatic_n10b_slug_hist.png}
+\caption{Histogram of detected slug lengths. (s2\_hydrostatic\_n10b)}
+\end{figure}
+
+% \hypertarget{verification-and-validation-relevant-to-this-case}{%
+% \subsection{6.2 Verification and validation relevant to this
+% case}\label{verification-and-validation-relevant-to-this-case}}
+
+% \begin{longtable}[]{@{}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+% \toprule\noalign{}
+% \begin{minipage}[b]{\linewidth}\raggedright
+% test
+% \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+% criterion / reference
+% \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+% result
+% \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+% status
+% \end{minipage} \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% V4 & hydrostatic pressure vs analytic rho g h & see results & PASS \\
+% V5 & spurious current max\textbar U\textbar{} \textless{} 1 \% J\_G &
+% see results & FAIL (diagnosed) \\
+% \end{longtable}
+
+% Full V\&V matrix:
+% \href{../../docs/vv_report.md}{\texttt{docs/vv\_report.md}}. Status
+% definitions: \textbf{PASS} = quantitative agreement within the stated
+% tolerance; \textbf{PARTIAL} = agreement with a known, quantified
+% bias/limitation; \textbf{FAIL} = criterion not met but diagnosed and
+% reported; \textbf{NOT DONE} = not affordable/available, with the reason.
+
+\hypertarget{convergence-studies}{%
+\subsection{6.3 Convergence studies}\label{convergence-studies}}
+
+No mesh study is complete for the spurious current: n = 10 gives about
+% 0.040 m/s and n = 20 about 0.038 m/s (othe
+% \texttt{dip2D\_hydrostatic\_n20} case),
+ i.e.~the parasitic current does
+not decrease with refinement. The sigma = 0 control
+% (\texttt{dip2D\_hydrostatic\_nosigma\_n10}) 
+gives the same order, which
+proves the current is not capillary. The pressure itself is
+mesh-insensitive to 0.01 \%. 
+% See \texttt{docs/vv\_report.md} V4-V5.
+
+\hypertarget{critical-analysis-and-limitations}{%
+\subsection{6.4 Critical analysis and
+limitations}\label{critical-analysis-and-limitations}}
+
+\begin{itemize}
+\tightlist
+\item
+  The model is \textbf{2D planar}, not axisymmetric or a circular pipe:
+  holdup and slug length are comparable to a pipe.
+  % , the interface height
+  % and the pressure are not. The 2D results must not be used to predict a
+  % real pipe at this D.
+\item
+  The spurious-current criterion
+  (\texttt{max\textbar{}U\textbar{}\ \sim 8\ \%\ J\_G}) is
+  \textbf{met}: and persists at all tested resolutions. It is not capillary and does not
+  decay, but it is only \textasciitilde0.6 \% of the dynamic gas
+  velocities during the release, so it does not affect the cycle
+  metrics. 
+  % See V5.
+\item
+  The gas is close to adiabatic in the baseline; the isothermal twin
+  bounds the thermodynamic model-form uncertainty to about 1 \% on the
+  start-up peak and \textless0.1 \% later (V15).
+\item
+  The gas in-situ Reynolds number is \textasciitilde2.4e3 (transitional
+  edge) and the model is laminar: this is an assumption, not a resolved
+  turbulence effect.
+\end{itemize}
+
+\hypertarget{what-can-be-concluded}{%
+\subsection{6.5 What can be
+concluded}\label{what-can-be-concluded}}
+
+% \textbf{Can:} 
+the solver reproduces the hydrostatic state and the
+start-up pressure release to within the GCI; compressibility changes the
+start-up peak by \textasciitilde1.2 \%; the dip at this operating point
+shows weak aperiodic pressure oscillations rather than a converged
+slugging cycle (see the main report). 
+% \textbf{Cannot:} claim a validated
+% slugging period/amplitude, claim 3D pipe behaviour from 2D planar data,
+% or claim cycle-resolved grid convergence (V10) and time-step
+% independence (V11) - both are documented as not done.
+
+\hypertarget{reproduction-instructions}{%
+\section{7. Reproduction instructions}\label{reproduction-instructions}}
+
+\hypertarget{software-environment-and-dependencies}{%
+\subsection{7.1 Software environment and
+dependencies}\label{software-environment-and-dependencies}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{OpenFOAM-14} (Foundation build, openfoam.org), solver
+  \texttt{foamRun\ -solver\ compressibleVoF}, case generated with git
+  \texttt{aef427a}.
+\item
+  Linux, bash; OpenMPI only for \texttt{NPROC\ \textgreater{}\ 1}
+  .
+\item
+  Python 3.10+ with \texttt{numpy}, \texttt{pandas},
+  \texttt{matplotlib}, \texttt{pyyaml} (project pipeline for visualization).
+\item
+  \texttt{pandoc} + \texttt{latexmk}/\texttt{pdflatex} only to rebuild
+  this report.
+\item
+  Environment: \texttt{source\ /opt/openfoam14/etc/bashrc}.
+\end{itemize}
+
+\hypertarget{step-by-step}{%
+\subsection{7.2 Step-by-step}\label{step-by-step}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+% \item
+  % Generate the case from the single source of truth:
+  % \texttt{python3\ tools/gen\_case.py\ dip2D\_hydrostatic\_n10\ -\/-force}.
+\item
+  Run it in place:
+  \texttt{cd\ ./dip2D\_hydrostatic\_n10\ \&\&\ ./Allclean\ \&\&\ ./Allrun}
+  (or \texttt{NPROC=12\ ./Allrun}), 
+  % or through the project pipeline
+  % below.
+% \item
+  % Pipeline (recommended, keeps the template clean):
+\end{enumerate}
+
+% \begin{Shaded}
+% \begin{Highlighting}[]
+% \ExtensionTok{./scripts/new\_run.sh}\NormalTok{ dip2D\_hydrostatic\_n10 }\OperatorTok{\textless{}}\NormalTok{run{-}name}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{endTime}\OperatorTok{\textgreater{}}\NormalTok{ 1}
+% \ExtensionTok{python3}\NormalTok{ tools/extract.py runs/}\OperatorTok{\textless{}}\NormalTok{run{-}name}\OperatorTok{\textgreater{}}
+% \ExtensionTok{python3}\NormalTok{ postproc/metrics.py runs/}\OperatorTok{\textless{}}\NormalTok{run{-}name}\OperatorTok{\textgreater{}}\NormalTok{ {-}{-}out postproc/out }\AttributeTok{{-}{-}summary{-}csv}
+% \ExtensionTok{python3}\NormalTok{ postproc/plots.py runs/}\OperatorTok{\textless{}}\NormalTok{run{-}name}\OperatorTok{\textgreater{}}
+% \ExtensionTok{python3}\NormalTok{ run\_all.py}
+% \ExtensionTok{python3}\NormalTok{ tools/make\_case\_reports.py }\AttributeTok{{-}{-}cases}\NormalTok{ dip2D\_hydrostatic\_n10}
+% \end{Highlighting}
+% \end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Post-process to VTK:
+  \texttt{source\ /opt/openfoam14/etc/bashrc\ \&\&\ foamToVTK\ -latestTime},
+  then open \texttt{VTK/*.vtk} in ParaView (colour by \texttt{alpha.oil}
+  for the interface).
+\end{enumerate}
+
+% \hypertarget{known-manual-steps-environment-quirks}{%
+% \subsection{7.3 Known manual steps / environment
+% quirks}\label{known-manual-steps-environment-quirks}}
+
+% \begin{itemize}
+% \tightlist
+% \item
+%   MPI: \texttt{/dev/shm} is blocked in some sandboxes; \texttt{Allrun}
+%   and \texttt{new\_run.sh} point vader at \texttt{\$PWD/.mpi\_shm}. TCP
+%   is \textasciitilde20x slower.
+% \item
+%   \texttt{setFields} in OpenFOAM-14 uses the
+%   \texttt{defaultValues}/\texttt{zones} syntax; the older syntax
+%   silently selects zero cells (check the liquid volume fraction in the
+%   solver log).
+% \item
+%   \texttt{fixedTemperature} is incompatible with
+%   \texttt{compressibleVoF} in v14; the isothermal limit uses
+%   \texttt{Cp\_g\ =\ 1e9}.
+% \item
+%   Runs longer than a few hours are resumed with
+%   \texttt{./scripts/continue\_run.sh}; check \texttt{run.pid}.
+% \end{itemize}
+
+\hypertarget{automation}{%
+\section{8. Automation}\label{automation}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+script
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+what it does
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+notes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Allrun} & blockMesh (if needed) + setFields (if present) +
+checkMesh + foamRun & serial by default; \texttt{NPROC=12\ ./Allrun} for
+MPI; \texttt{-\/-continue} restarts \\
+\texttt{Allclean} & removes written times except \texttt{0/},
+\texttt{postProcessing/}, \texttt{VTK/}, logs, \texttt{polyMesh} &
+idempotent; keeps the setup \\
+\texttt{run.sh} & in-place run with metadata recording (case key,
+OpenFOAM version, git hash) & used when you want a self-contained case
+run \\
+% \texttt{scripts/new\_run.sh} & copies the template to
+% \texttt{runs/\textless{}run\textgreater{}}, launches, records PID/logs &
+% the pipeline used for all reported results \\
+\end{longtable}
+
+% Full automation is possible:
+% \texttt{python3\ tools/make\_case\_reports.py} regenerates this report
+% and \texttt{python3\ run\_all.py} regenerates all metrics/figures from
+% the runs. Long simulations are the only manual part (start/stop/resume).
+
+\hypertarget{repository-hygiene-and-organization}{%
+\section{9. Repository hygiene and
+organization}\label{repository-hygiene-and-organization}}
+
+\begin{itemize}
+\tightlist
+\item
+  Simulation results are \textbf{not committed}: \texttt{.gitignore}
+  excludes \texttt{runs/}, \texttt{./*/  
+{[}0-9{]}*/},
+  \texttt{./*/postProcessing/}, \texttt{./*/VTK/},
+  \texttt{./*/log.*}, \texttt{constant/polyMesh}, and LaTeX build
+  artefacts.
+\item
+  This case directory contains only inputs: \texttt{0/},
+  \texttt{constant/}, \texttt{system/}, \texttt{Allrun},
+  \texttt{Allclean}, \texttt{run.sh}, \texttt{meta.json}, this README.
+\item
+  All inputs are reproducible from \texttt{../all_params.yaml} 
+  % +
+  % \texttt{tools/gen\_case.py} (or \texttt{tools/gen\_extra.py}); the
+  % generator is the single source of truth.
+% \item
+  % Layout: \texttt{params/} inputs \textbar{} \texttt{cases/} templates
+  % \textbar{} \texttt{runs/} results (ignored) \textbar{}
+  % \texttt{tools/}, \texttt{postproc/} Python \textbar{} \texttt{oned/}
+  % 1D solver \textbar{} \texttt{scripts/} drivers \textbar{}
+  % \texttt{report/} reports \textbar{} \texttt{docs/} \textbar{}
+  % \texttt{figures/} \textbar{} \texttt{data/}.
+\end{itemize}
+
+% \hypertarget{file-index}{%
+% \section{10. File index}\label{file-index}}
+
+% \begin{longtable}[]{@{}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+%   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+% \toprule\noalign{}
+% \begin{minipage}[b]{\linewidth}\raggedright
+% path
+% \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+% content
+% \end{minipage} \\
+% \midrule\noalign{}
+% \endhead
+% \bottomrule\noalign{}
+% \endlastfoot
+% \texttt{cases/dip2D\_hydrostatic\_n10/} & OpenFOAM case template (inputs
+% only) \\
+% \texttt{cases/dip2D\_hydrostatic\_n10/0/} & initial and boundary
+% conditions \\
+% \texttt{cases/dip2D\_hydrostatic\_n10/constant/} & g, momentumTransport,
+% phaseProperties, physicalProperties.* \\
+% \texttt{cases/dip2D\_hydrostatic\_n10/system/} & blockMeshDict,
+% controlDict, fvSchemes, fvSolution, functions, setFieldsDict \\
+% \texttt{cases/dip2D\_hydrostatic\_n10/Allrun}, \texttt{Allclean} &
+% automation scripts \\
+% \texttt{report/dip2D\_hydrostatic\_n10/README.md} & this file \\
+% \texttt{report/dip2D\_hydrostatic\_n10/report.pdf} & compiled PDF of
+% this file \\
+% \texttt{runs/s2\_hydro\_60s/} & solver logs, time directories,
+% postProcessing, extracted CSVs \\
+% \texttt{runs/s2\_hydrostatic\_long/} & solver logs, time directories,
+% postProcessing, extracted CSVs \\
+% \texttt{runs/s2\_hydrostatic\_n10/} & solver logs, time directories,
+% postProcessing, extracted CSVs \\
+% \texttt{runs/s2\_hydrostatic\_n10b/} & solver logs, time directories,
+% postProcessing, extracted CSVs \\
+% \end{longtable}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+% \textbf{References:}   
+{[}1{]}--  
+{[}13{]} :
+(terrain-slugging literature, VOF/CSF methods, error estimation and the
+OpenFOAM-14 documentation).
+  
+{[}1{]} Schmidt, Z., Brill, J.P., Beggs, H.D. (1980). Experimental study
+of severe slugging in a two-phase-flow pipeline-riser pipe system.
+\emph{SPE J.} 20(5), 407-414.   
+
+{[}2{]} Taitel, Y. (1986). Stability of
+severe slugging. \emph{Int. J. Multiphase Flow} 12(2), 203-217.   
+
+{[}3{]}
+de Henau, V., Raithby, G.D. (1995a). A transient two-fluid model for the
+simulation of slug flow in pipelines - I. Theory. \emph{Int. J.
+Multiphase Flow} 21(3), 335-349.   
+
+{[}4{]} de Henau, V., Raithby, G.D.
+(1995b). A transient two-fluid model for the simulation of slug flow in
+pipelines - II. Validation. \emph{Int. J. Multiphase Flow} 21(3),
+351-363.   
+
+{[}5{]} de Henau, V., Raithby, G.D. (1995c). A study of
+terrain-induced slugging in two-phase flow pipelines. \emph{Int. J.
+Multiphase Flow} 21(3), 365-379.   
+
+{[}6{]} Zuber, N., Findlay, J.A.
+(1965). Average volumetric concentration in two-phase flow systems.
+\emph{J. Heat Transfer} 87(4), 453-468.   
+
+{[}7{]} Bendiksen, K.H. (1984).
+The dynamics of long gas bubbles in inclined tubes. \emph{Int. J.
+Multiphase Flow} 10(4), 467-483.   
+
+{[}8{]} Hirt, C.W., Nichols, B.D.
+(1981). Volume of fluid (VOF) method for the dynamics of free
+boundaries. \emph{J. Comput. Phys.} 39, 201-225.   
+
+{[}9{]} Brackbill,
+J.U., Kothe, D.B., Zemach, C. (1992). A continuum method for modeling
+surface tension. \emph{J. Comput. Phys.} 100, 335-354.  
+
+{[}10{]} Rusche,
+H. (2002). \emph{Computational fluid dynamics of dispersed two-phase
+flows at high phase fractions}. PhD thesis, Imperial College London.
+  
+{[}11{]} Issa, R.I. (1986). Solution of the implicitly discretised fluid
+flow equations by operator-splitting. \emph{J. Comput. Phys.} 62, 40-65.
+  
+{[}12{]} Celik, I.B., Ghia, U., Roache, P.J., Freitas, C.J., Coleman,
+H., Raad, P.E. (2008). Procedure for estimation and reporting of
+uncertainty due to discretization in CFD applications. \emph{J. Fluids
+Eng.} 130(7), 078001.   
+{[}13{]} OpenFOAM Foundation (2026). OpenFOAM-14,
+https://openfoam.org/v14 (solver module \texttt{compressibleVoF}).
+
+\end{document}
+
+
+
+% \noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+% \subsection*{General guidelines for a term project in the course ``Modeling with
+% Open Source Software''.}
+
+% The main purpose of the course project is to give you an opportunity
+% to use and extend numerical methods implemented in the OpenFOAM environment
+% in order to explore a realistic scientific problem, to write a paper
+% about your results, and to make research presentations. You are allowed
+% to use AI tools except for the purpose of writing your reports. 
+
+% \subsection*{Content}
+% \begin{enumerate}
+% \item The project report should follow general standards of a scientific
+% publication. That is, it should: 
+% \begin{enumerate}
+% \item begin with an introduction to the problem, describe the state of the
+% art, and scientific merit and practical relevance; also state the
+% questions that will be explored in the project;
+% \item provide a mathematical statement of the underlying model (e.g., systems
+% of PDE that describe your phenomenon) and some discussion of existing
+% approaches to its solution;
+% \item describe numerical algorithms that will be used to solve the model.
+% Various important properties of the chosen algorithms (order of convergence,
+% stability properties, computational cost, etc.) must be explained;
+% \item provide results of numerical exploration of the model that must include
+% convergence tests and validation against known solutions;
+% \item draw conclusions from the study and outline possible future research;
+% \item include proper bibliography and citations.
+% \end{enumerate}
+% \end{enumerate}
+
+% \subsection*{Timelines}
+
+% The following timeline must be followed:
+% \begin{enumerate}
+% \item Nov. 6 -- Project proposal due. The proposal should be structured
+% as the final report and should include: the problem description with
+% governing equations, initial and boundary conditions, main literature
+% references, numerical approaches, and expected simulation results.
+% In-class presentation of the proposal should be given on Nov. 7.
+% \item Nov. 20 -- Project progress report 1. Should contain most of Sections
+% 1 to 3 below.
+% \item Dec. 4 -- Project progress report 2. This should contain almost all
+% necessary numerical results in Section 4. Some revision and improvements
+% may still be necessary.
+% \item Dec. 16 -- Final presentations. 
+% \item Dec. 18 -- Project final report due. 
+% \item Dec. 19 -- Submission of the project video. 
+% \end{enumerate}
+
+% \subsection*{Other}
+
+% Writing in LaTeX is required. The use of Overleaf (overleaf.com) is
+% recommended. Use this latex file as a template that you can import
+% to Overleaf. The structure below is supposed to serve as a guide for
+% you to organize your writing. Feel free to modify it according to
+% your needs. You can also write in LyX (lyx.org).%
+% \end{minipage}}
+
+% \pagebreak
+
+% \section*{Project proposal}
+
+% So the first thing to do is to write a project proposal. It should
+% contain the following information making it clear what problem you
+% want to analyze and what you want to accomplish:
+% \begin{itemize}
+% \item Title
+% \item A description of what the problem is and what the mathematical model
+% is behind the problem. The model may have some analytical solutions
+% in particular cases (e.g. in the 1D steady state), but generally for
+% situations of real interest it should require a numerical solution.
+% If an analytical solution is available, use it as a test case for
+% your numerical methods.
+% \item Numerical methods you will be using to solve the problem. Even if
+% you do not know full details of the methods, still state them and
+% describe to the extent you know. It is expected that once you understand
+% the methods better, a more complete description will be added later.
+% \item Think about the answer and expected results. What do you want to learn
+% at the end? A good problem should have an exciting answer. Getting
+% there begins with good questions.
+% \end{itemize}
+% \pagebreak
+
+% \section{Introduction}
+
+% \boxed{1-2 \ pages} Define what the problem is and describe it aiming
+% at a general scientific audience. Make references to relevant literature,
+% e.g., \cite{Einstein:1935aa,Hawking_1975}. 
+
+% As a last paragraph, provide an outline of the remainder of the paper.
+
+% \section{A physical process and its mathematical model}
+
+% \boxed{2-3 \ pages} This is a place to get technical. You need to
+% explain the problem in mathematical terms and provide a self-contained
+% description of what equations you will be solving numerically in the
+% subsequent sections. For example, this could be a system of equations
+% like 
+% \begin{align}
+% u_{t}+uu_{x}+vu_{y} & =\epsilon_{1}\left(u_{xx}+u_{yy}\right)\label{eq:Burgers-2D-u}\\
+% v_{t}+uv_{x}+vv_{y} & =\epsilon_{2}\left(v_{xx}+v_{yy}\right).\label{eq:Burgers-2D-v}
+% \end{align}
+
+
+% \section{Numerical algorithms}
+
+% \boxed{3-4 \ pages} You should make the right choice of numerical
+% algorithms/solvers to investigate the stated problem. Describe them
+% here. The methods should be analyzed in terms of its accuracy, stability,
+% computational cost, and other numerical properties using appropriate
+% test problems. 
+
+% \section{Numerical results}
+
+% \boxed{3-4 \ pages} After the analysis in the previous section, it
+% should become clear how the algorithm works. Provide necessary computational
+% results for your model \eqref{eq:Burgers-2D-u}. These should be clean
+% numerical experiments providing reliable, converged, reproducible
+% results that you may want to share with others and--importantly--others
+% will find some interesting new knowledge in them (this is exactly
+% what a scientific publication should be). This is also a place to
+% use various numerical tools of data analysis and visualization (e.g.,
+% Paraview). You should analyze the results and present them in a format
+% typical for a good scientific journal (see publications in, e.g.,
+% Journal of Computational Physics, Computers and Fluids, Journal of
+% Fluid Mechanics, etc.). 
+
+% \begin{figure}
+% \begin{centering}
+% \includegraphics[height=5cm]{fractal}\includegraphics[height=5cm]{einstein}
+% \par\end{centering}
+% \caption{This is an example of how to include figures.}
+
+% \end{figure}
+
+
+% \section{Conclusions}
+
+% \boxed{1 \ page} Summarize your main findings and provide an outlook
+% to the future. What are new questions that came up during this study
+% that you would like to explore further?
+
+% \bibliographystyle{plain}
+% \bibliography{sample-bib-file}
+
+% \pagebreak{}
+
+% \appendix
+
+% \section{Program listing}
+
+% It is required that the codes that you have developed and used for
+% the project be put on\emph{ }GitHub (github.com). 
