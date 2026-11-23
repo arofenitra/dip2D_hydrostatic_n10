@@ -1,18 +1,14 @@
 # Case `dip2D_hydrostatic_n10` — OpenFOAM-14 case template
 
-> **Auto-generated** by `tools/gen_case.py` from `params/params.yaml`. Do not hand-edit the
-> dictionaries: change `params/params.yaml` (or the generator) and re-run
-> `python3 tools/gen_case.py dip2D_hydrostatic_n10 --force`.
-> Full per-case report (methodology, equations, dimensional analysis, results, verification):
-> [`report/dip2D_hydrostatic_n10/README.md`](../../report/dip2D_hydrostatic_n10/README.md) and
-> [`report/dip2D_hydrostatic_n10/report.pdf`](../../report/dip2D_hydrostatic_n10/report.pdf).
 
+> dictionaries: change `all_params.yaml` (or the generator) 
+> 
 **Static verification case:** both inlet velocities are fixed to zero and the liquid is initialised with the exact hydrostatic `p_rgh`, so the initial state is static to round-off; the case is used to measure the hydrostatic pressure error and the spurious-current amplitude.
 
 ## 1. Software environment and dependencies
 
 * **OpenFOAM-14** (Foundation build, openfoam.org), solver `foamRun -solver compressibleVoF`.
-  Generated and tested with git `aef427a`.
+  Generated and tested .
 * Linux (verified on Ubuntu, 12 cores); `bash`.
 * OpenMPI only if `NPROC>1` (serial is faster on these meshes; see §3.5).
 * Python 3.10+ with `numpy`, `pandas`, `matplotlib`, `pyyaml` for the project pipeline
