@@ -1,0 +1,161 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  14
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      functions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+// ---------------------------------------------------------------------------
+// Point probes: p(t), U(t), alpha(t), T(t) at three locations.
+//   probe 0: upstream gas, one cell below the top wall at x=0.5 m  -> p_up(t)
+//   probe 1: mid-height at the dip vertex x=3 m
+//   probe 2: downstream gas near the outlet
+// ---------------------------------------------------------------------------
+probes
+{
+    type            probes;
+    libs            ("libsampling.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    fields          (p U alpha.oil T);
+    fixedLocations  false;
+    probeLocations
+    (
+        (0.5 0.2654043388 0.005) (3 0.0240967336 0.005) (5.7 0.2839008338 0.005)
+    );
+}
+
+// ---------------------------------------------------------------------------
+// Vertical interface height at 31 x-stations.  The function
+// integrates alpha along the gravity direction; hIB/H = cross-section holdup
+// (exact for the planar V-geometry because the vertical height is H=D/cos5).
+// ---------------------------------------------------------------------------
+interfaceHeight1
+{
+    type            interfaceHeight;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    alpha           alpha.oil;
+    liquid          true;
+    locations
+    (
+        (0.09677419355 0.2535024933 0.005)
+        (0.2903225806 0.2365692036 0.005)
+        (0.4838709677 0.2196359139 0.005)
+        (0.6774193548 0.2027026242 0.005)
+        (0.8709677419 0.1857693344 0.005)
+        (1.064516129 0.1688360447 0.005)
+        (1.258064516 0.151902755 0.005)
+        (1.451612903 0.1349694653 0.005)
+        (1.64516129 0.1180361756 0.005)
+        (1.838709677 0.1011028859 0.005)
+        (2.032258065 0.08416959616 0.005)
+        (2.225806452 0.06723630644 0.005)
+        (2.419354839 0.05030301673 0.005)
+        (2.612903226 0.03336972701 0.005)
+        (2.806451613 0.0164364373 0.005)
+        (3 -0.000496852416 0.005)
+        (3.193548387 0.01743519963 0.005)
+        (3.387096774 0.03436848935 0.005)
+        (3.580645161 0.05130177906 0.005)
+        (3.774193548 0.06823506878 0.005)
+        (3.967741935 0.08516835849 0.005)
+        (4.161290323 0.1021016482 0.005)
+        (4.35483871 0.1190349379 0.005)
+        (4.548387097 0.1359682276 0.005)
+        (4.741935484 0.1529015174 0.005)
+        (4.935483871 0.1698348071 0.005)
+        (5.129032258 0.1867680968 0.005)
+        (5.322580645 0.2037013865 0.005)
+        (5.516129032 0.2206346762 0.005)
+        (5.709677419 0.2375679659 0.005)
+        (5.903225806 0.2545012556 0.005)
+    );
+}
+
+// ---------------------------------------------------------------------------
+// Total mixture mass M(t) = volume integral of rho  (mass-balance check)
+// ---------------------------------------------------------------------------
+totalMass
+{
+    type            volFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    cellZone        all;
+    operation       volIntegrate;
+    fields          (rho);
+    writeFields     false;
+}
+
+// ---------------------------------------------------------------------------
+// Maximum velocity magnitude (spurious-current / CFL diagnostic)
+// ---------------------------------------------------------------------------
+maxU
+{
+    type            volFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    cellZone        all;
+    operation       maxMag;
+    fields          (U);
+    writeFields     false;
+}
+
+// ---------------------------------------------------------------------------
+// Inlet / outlet mass flow from the solver's phase mass fluxes
+// alphaRhoPhi.<phase> [kg/s]; orientedSum uses outward patch normals,
+// so inflow is negative.
+// ---------------------------------------------------------------------------
+massIn
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    patches         (inletLiquid inletGas);
+    operation       orientedSum;
+    fields          (alphaRhoPhi.oil alphaRhoPhi.air);
+    writeFields     false;
+}
+
+massOut
+{
+    type            surfaceFieldValue;
+    libs ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    patch           outlet;
+    operation       orientedSum;
+    fields          (alphaRhoPhi.oil alphaRhoPhi.air);
+    writeFields     false;
+}
+
+// ---------------------------------------------------------------------------
+// Outlet pressure (area average over the outlet patch) -> p_out(t)
+// ---------------------------------------------------------------------------
+pOutlet
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    runTime;
+    writeInterval   0.05;
+    patch           outlet;
+    operation       areaAverage;
+    fields          (p alpha.oil);
+    writeFields     false;
+}
+
+// ************************************************************************* //

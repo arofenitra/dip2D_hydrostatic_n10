@@ -1,0 +1,9 @@
+case_key=dip2D_hydrostatic_n10
+run_name=s2_hydrostatic_n10
+generated_utc=2026-11-19T20:21:49Z
+foam_version=14
+git_hash=ebcd839
+cells=12000
+n_per_D=10
+endTime=5;
+nproc=1

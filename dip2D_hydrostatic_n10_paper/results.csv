@@ -1,0 +1,5 @@
+run,finished,t_last_s,record_end_s,transient_flag,period_peaks_s,period_fft_s,dp_Pa,dp_range_Pa,n_cycles,n_slugs,mass_cum_err,core_hours
+s2_hydro_60s,True,60.0,60.0,transient_not_detected,,,,0.033999999999650754,,1201,,0.1686111111111111
+s2_hydrostatic_long,True,20.0,20.0,transient_not_detected,,,,0.013000000020838343,,401,,0.049444444444444444
+s2_hydrostatic_n10,True,5.0,5.0,transient_not_detected,,,,0.15099999999802094,,101,,0.010277777777777778
+s2_hydrostatic_n10b,True,5.0,5.0,transient_not_detected,,,,0.15099999999802094,,101,,0.014444444444444444
